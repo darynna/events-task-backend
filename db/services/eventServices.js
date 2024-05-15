@@ -11,6 +11,38 @@ const getEventsService = async (req, res) => {
   }
 };
 
+const addParticipantService = async (eventId, participantData) => {
+  try {
+    const event = await Event.findById(eventId);
+    console.log(event)
+
+    if (!event) {
+      throw httpError(404, 'Event not found');
+    }
+
+    const existingParticipant = event.participants.find(participant => participant.email === participantData.email);
+    if (existingParticipant) {
+      throw httpError(400, 'Participant with the provided email already exists for this event');
+    }
+
+    const newParticipant = {
+      name: participantData.name,
+      email: participantData.email,
+      dateOfBirth: participantData.dateOfBirth,
+      heardAboutEvent: participantData.heardAboutEvent
+    };
+
+    event.participants.push(newParticipant);
+
+    await event.save();
+    return event;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 module.exports = {
-    getEventsService
+    getEventsService,
+    addParticipantService,
 }

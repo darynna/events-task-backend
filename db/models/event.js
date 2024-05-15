@@ -27,7 +27,7 @@ const EventSchema = new Schema(
             type: String,
             required: [true, "Participant name is required"],
           },
-          emailAddress: {
+          email: {
             type: String,
             required: [true, "Email is required"]
           },
