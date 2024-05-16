@@ -24,9 +24,7 @@ const addParticipant = async (req, res, next) => {
       // If the error has a status code, it's an expected error
       next(error);
     } else {
-      // If the error doesn't have a status code, it's an internal server error
-      const errorMessage = 'Internal server error';
-      next(httpError(500, errorMessage));
+      next(httpError(500, error.message));
     }
   }
 };
