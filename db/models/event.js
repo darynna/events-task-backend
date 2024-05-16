@@ -31,6 +31,10 @@ const EventSchema = new Schema(
             type: String,
             required: [true, "Email is required"]
           },
+          dateOfRegistration: {
+             type: Date,
+           required: [true, "Registration date is required"],
+          },
           dateOfBirth: {
             type: String,
             required: [true, "Date of birth is required"],

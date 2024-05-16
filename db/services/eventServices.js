@@ -28,6 +28,7 @@ const addParticipantService = async (eventId, participantData) => {
     const newParticipant = {
       name: participantData.name,
       email: participantData.email,
+      dateOfRegistration: participantData.dateOfRegistration,
       dateOfBirth: participantData.dateOfBirth,
       heardAboutEvent: participantData.heardAboutEvent
     };
